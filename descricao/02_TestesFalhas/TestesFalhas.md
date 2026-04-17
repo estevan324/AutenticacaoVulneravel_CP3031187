@@ -2,7 +2,7 @@
 ## 🧪 Para funcionar a aplicação é necessário os seguintes passos:
 
 - Os três serviços estão rodando (gateway na porta 3000, auth-service na 3001, product-service na 3002).
-- Bancos `auth_db` e `product_db` criados no MySQL (create database auth_db; create database user_db;)
+- Bancos `auth_db` e `product_db` criados no MySQL (create database auth_db; create database product_db;)
 - Thunder Client aberto (ou outro cliente REST, como Postman ou Insomnia).
 
 ---
