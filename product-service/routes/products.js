@@ -105,3 +105,21 @@ router.delete("/:id", verifyToken, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+const checkAdmin = (req, res, next) => {
+  // Supondo que o token contenha um campo 'role'
+  if (req.user.role !== "admin")
+    return res.status(403).json({ error: "Acesso negado" });
+  next();
+};
+
+router.get("/admin/debug", verifyToken, checkAdmin, async (req, res) => {
+  const [products] = await db.execute(
+    "SELECT id, name, price, user_id FROM products",
+  );
+  res.json({
+    message: "Debug autorizado",
+    total: products.length,
+    products,
+  });
+});
