@@ -123,3 +123,5 @@ router.get("/admin/debug", verifyToken, checkAdmin, async (req, res) => {
     products,
   });
 });
+
+module.exports = router;

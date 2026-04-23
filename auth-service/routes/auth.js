@@ -1,4 +1,11 @@
-﻿const JWT_SECRET = process.env.JWT_SECRET; // agora obrigatório e forte
+﻿const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const db = require("../db");
+const router = express.Router();
+require("dotenv").config();
+
+const JWT_SECRET = process.env.JWT_SECRET; // agora obrigatório e forte
 const REFRESH_SECRET = process.env.REFRESH_SECRET || JWT_SECRET; // idealmente outro segredo
 // Gerar access token (curta duração)
 function generateAccessToken(user) {
