@@ -1,8 +1,8 @@
-﻿require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const authRoutes = require('./routes/auth');
-const db = require('./db');
+﻿require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const authRoutes = require("./routes/auth");
+const db = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.use('/auth', authRoutes);
+app.use("/auth", authRoutes);
 
 // Criar tabela users se não existir
 (async () => {
@@ -20,12 +20,13 @@ app.use('/auth', authRoutes);
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(50) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
+        refresh_token VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
-    console.log('Tabela users verificada/criada');
+    console.log("Tabela users verificada/criada");
   } catch (err) {
-    console.error('Erro ao criar tabela:', err);
+    console.error("Erro ao criar tabela:", err);
   }
 })();
 
